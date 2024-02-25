@@ -209,8 +209,20 @@ def pregunta_07():
     ]
 
     """
-    return
+    data = open("data.csv", "r")
+    text = [line.split('\t') for line in data]
+    dic = {}
+    for line in text:
+        if line[1] in dic:
+            dic[line[1]].append(line[0])
+        else:
+            dic[line[1]] = [line[0]]
+    lista = []
+    for key in dic:
+        lista.append((int(key), dic[key]))
+    lista = sorted(lista)
 
+    return lista
 
 def pregunta_08():
     """
